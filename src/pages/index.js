@@ -1,4 +1,10 @@
 import React from "react"
+
+import { ThemeProvider } from "@material-ui/styles"
+import CssBaseline from "@material-ui/core/CssBaseline"
+import { createMuiTheme } from "@material-ui/core/styles"
+import { deepPurple, deepOrange } from "@material-ui/core/colors"
+
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/styles"
 
@@ -9,7 +15,7 @@ const useStyles = makeStyles({
   },
 })
 
-export default () => {
+function App() {
   const classes = useStyles()
 
   return (
@@ -62,5 +68,23 @@ export default () => {
         overline text
       </Typography>
     </div>
+  )
+}
+
+export default () => {
+  const theme = createMuiTheme({
+    palette: {
+      primary: deepPurple,
+      secondary: deepOrange,
+    },
+    typography: {
+      useNextVariants: true,
+    },
+  })
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
   )
 }
