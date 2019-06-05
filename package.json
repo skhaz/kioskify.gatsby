@@ -12,6 +12,7 @@
     "array-move": "^2.1.0",
     "firebase": "^6.1.0",
     "gatsby": "^2.8.4",
+    "gatsby-plugin-netlify": "^2.0.17",
     "js-video-url-parser": "^0.3.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -20,9 +21,9 @@
     "react-sortable-hoc": "^1.9.1"
   },
   "scripts": {
-    "clean": "rimraf .firebase .cache",
+    "clean": "rimraf .firebase .cache build",
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}"
+    "format": "prettier --write '*.{js,json}' 'src/**/*.{js,jsx}'"
   }
 }
