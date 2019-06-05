@@ -9,6 +9,8 @@ import { makeStyles } from "@material-ui/styles"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
 
+import Badge from "@material-ui/core/Badge"
+import MailIcon from "@material-ui/icons/Mail"
 
 const useStyles = makeStyles({
   root: {
@@ -49,9 +51,27 @@ function App() {
         Quos blanditiis tenetur
       </Typography>
 
-      <Button variant="contained" color="primary">
-        I'm a Button!
-      </Button>
+      <>
+        <Button variant="contained" color="primary">
+          I'm a Button!
+        </Button>
+      </>
+      <>
+        <Badge className={classes.margin} badgeContent={99} color="primary">
+          <MailIcon />
+        </Badge>
+        <Badge className={classes.margin} badgeContent={100} color="primary">
+          <MailIcon />
+        </Badge>
+        <Badge
+          className={classes.margin}
+          badgeContent={1000}
+          max={999}
+          color="primary"
+        >
+          <MailIcon />
+        </Badge>
+      </>
     </div>
   )
 }
