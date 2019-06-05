@@ -13,6 +13,7 @@
     "firebase": "^6.1.0",
     "gatsby": "^2.8.4",
     "gatsby-plugin-jss": "^2.0.9",
+    "gatsby-plugin-material-ui": "^2.0.1",
     "gatsby-plugin-netlify": "^2.0.17",
     "js-video-url-parser": "^0.3.3",
     "react": "^16.8.6",
