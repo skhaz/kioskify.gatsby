@@ -34,6 +34,6 @@
     "clean": "rimraf .firebase .cache build",
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write '*.{js,json}' 'src/**/*.{js,jsx}'"
+    "format": "prettier --write src/**/*.{js,jsx}"
   }
 }
