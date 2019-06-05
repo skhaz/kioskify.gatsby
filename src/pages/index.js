@@ -5,8 +5,10 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import { createMuiTheme } from "@material-ui/core/styles"
 import { deepPurple, deepOrange } from "@material-ui/core/colors"
 
-import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/styles"
+import Typography from "@material-ui/core/Typography"
+import Button from "@material-ui/core/Button"
+
 
 const useStyles = makeStyles({
   root: {
@@ -46,27 +48,10 @@ function App() {
         subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         Quos blanditiis tenetur
       </Typography>
-      <Typography variant="body1" gutterBottom>
-        body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-        blanditiis tenetur unde suscipit, quam beatae rerum inventore
-        consectetur, neque doloribus, cupiditate numquam dignissimos laborum
-        fugiat deleniti? Eum quasi quidem quibusdam.
-      </Typography>
-      <Typography variant="body2" gutterBottom>
-        body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-        blanditiis tenetur unde suscipit, quam beatae rerum inventore
-        consectetur, neque doloribus, cupiditate numquam dignissimos laborum
-        fugiat deleniti? Eum quasi quidem quibusdam.
-      </Typography>
-      <Typography variant="button" gutterBottom>
-        button text
-      </Typography>
-      <Typography variant="caption" gutterBottom>
-        caption text
-      </Typography>
-      <Typography variant="overline" gutterBottom>
-        overline text
-      </Typography>
+
+      <Button variant="contained" color="primary">
+        I'm a Button!
+      </Button>
     </div>
   )
 }
