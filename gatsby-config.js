@@ -1,6 +1,13 @@
 module.exports = {
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-web-font-loader`,
+      options: {
+        google: {
+          families: ["Roboto:300,400,500", "Material+Icons"],
+        },
+      },
+    }`gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-offline`,
@@ -24,5 +31,11 @@ module.exports = {
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: "tomato",
+      },
+    },
   ],
 }
