@@ -1,3 +1,3 @@
 module.exports = {
-  plugins: [`gatsby-plugin-netlify`],
+  plugins: [`gatsby-plugin-netlify`, `gatsby-plugin-jss`],
 }
