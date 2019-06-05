@@ -1,13 +1,6 @@
 module.exports = {
   plugins: [
-    {
-      resolve: `gatsby-plugin-web-font-loader`,
-      options: {
-        google: {
-          families: ["Roboto:300,400,500", "Material+Icons"],
-        },
-      },
-    },
+
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-material-ui`,
