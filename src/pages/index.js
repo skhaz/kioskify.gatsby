@@ -1,3 +1,10 @@
 import React from "react"
+import Button from "@material-ui/core/Button"
 
-export default () => <></>
+export default () => {
+  return (
+    <Button variant="contained" color="primary">
+      Ok
+    </Button>
+  )
+}
