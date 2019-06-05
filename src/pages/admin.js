@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 function App() {
   const classes = useStyles()
 
-  return <Button className={classes.root} />
+  return <Button className={classes.root}>Hook</Button>
 }
 
 export default () => {
