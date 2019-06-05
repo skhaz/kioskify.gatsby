@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button"
 export default () => {
   return (
     <Button variant="contained" color="primary">
-      Ok
+      1
     </Button>
   )
 }
