@@ -26,6 +26,7 @@ const useStyles = makeStyles({
     width: 160,
     height: 90,
     borderRadius: 0,
+    margin: 8,
   },
 
   action: {
