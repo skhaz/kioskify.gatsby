@@ -70,31 +70,3 @@ export default () => {
     </ThemeProvider>
   )
 }
-
-/*
-
-
-const App = withFirebase((f) => <h2>{JSON.stringify(f)}</h2>)
-
-export default () => {
-
-  useEffect(() => {
-    const lazyApp = import("firebase/app")
-    const lazyFirestore = import("firebase/firestore")
-    const lazyAuth = import("firebase/auth")
-
-    Promise.all([lazyApp, lazyFirestore, lazyAuth]).then(([firebase]) => {
-      const firestore = getFirebase(firebase).firestore()
-      console.log(firestore)
-      setFirebase(firestore)
-    })
-  }, [])
-
-  const FirebaseContext = React.createContext(null)
-
-  return (
-      
-    
-  )
-}
-*/

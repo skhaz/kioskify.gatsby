@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react"
+import { createContext, useContext } from "react"
 
 const firebaseSettings = {
   apiKey: process.env.GATSBY_FIREBASE_API_KEY,
@@ -23,7 +23,7 @@ const getFirebase = firebase => {
   return firebase
 }
 
-const FirebaseContext = React.createContext(null)
+const FirebaseContext = createContext(null)
 
 const useFirebase = () => {
   return useContext(FirebaseContext)
