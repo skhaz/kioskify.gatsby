@@ -1,40 +1,10 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { useEffect, useState } from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { ThemeProvider } from "@material-ui/styles"
 import { createMuiTheme } from "@material-ui/core/styles"
 import { deepPurple, deepOrange } from "@material-ui/core/colors"
-import { makeStyles } from "@material-ui/styles"
-
-import { useCollection } from "react-firebase-hooks/firestore"
-
-import {
-  getFirebase,
-  useFirebase,
-  FirebaseContext,
-} from "../providers/firebase"
-
-const useStyles = makeStyles({
-  button: {},
-})
-
-function App() {
-  const classes = useStyles()
-
-  const firebase = useFirebase()
-
-  const [value, loading, error] = useCollection(
-    firebase.firestore().collection("machines")
-  )
-
-  return (
-    <>
-      {value &&
-        value.docs.map((doc, i) => (
-          <h5 key={`d-${i}`}>{doc.data().manufacture}</h5>
-        ))}
-    </>
-  )
-}
+import { getFirebase, FirebaseContext } from "../providers/firebase"
+import { App, Header } from "../components"
 
 export default () => {
   const [firebase, setFirebase] = useState()
@@ -62,6 +32,7 @@ export default () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Header />
       {firebase && (
         <FirebaseContext.Provider value={firebase}>
           <App />
