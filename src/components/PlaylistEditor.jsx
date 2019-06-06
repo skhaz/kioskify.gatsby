@@ -71,6 +71,7 @@ export default () => {
       .get();
     const groupRef = groupQuery.docs[0].ref;
     */
+
     const unsubscribe = firestore
       .collection("v1")
       // .where('group', '==', groupRef)
