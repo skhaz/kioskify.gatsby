@@ -6,6 +6,8 @@ import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 import { useFirebase } from "../providers/firebase"
+import PlaylistEditor from "./PlaylistEditor"
+import MachineManager from "./MachineManager"
 
 export default () => {
   const TabContainer = props => (
@@ -37,9 +39,9 @@ export default () => {
   }
 
   useEffect(() => {
-    const unsubscribe = firebaseAuth.onAuthStateChanged(user =>
+    const unsubscribe = firebaseAuth.onAuthStateChanged(user => {
       setSignedIn(!!user)
-    )
+    })
 
     return () => {
       unsubscribe()
@@ -49,6 +51,10 @@ export default () => {
   const renderUnauthorized = () => (
     <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebaseAuth} />
   )
+
+  const MemoMachine = useCallback(<MachineManager />, [])
+
+  const MemoPlaylist = useCallback(<PlaylistEditor />, [])
 
   const renderEditor = () => (
     <>
@@ -64,16 +70,8 @@ export default () => {
           <LinkTab label="playlist" href="#" />
         </Tabs>
       </AppBar>
-      {index === 1 && (
-        <TabContainer>
-          <MachineManager />
-        </TabContainer>
-      )}
-      {index === 2 && (
-        <TabContainer>
-          <PlaylistEditor />
-        </TabContainer>
-      )}
+      {index === 1 && <TabContainer>{MemoMachine}</TabContainer>}
+      {index === 2 && <TabContainer>{MemoPlaylist}</TabContainer>}
     </>
   )
 

@@ -13,7 +13,6 @@ const firebaseSettings = {
 let firebaseInstance
 
 const getFirebase = firebase => {
-  console.log(firebase)
   if (firebaseInstance) {
     return firebaseInstance
   }
