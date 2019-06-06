@@ -25,13 +25,14 @@
     "js-video-url-parser": "^0.3.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-firebase-hooks": "^2.0.0",
     "react-firebaseui": "^3.1.2",
     "react-helmet": "^5.2.1",
     "react-player": "^1.11.0",
     "react-sortable-hoc": "^1.9.1"
   },
   "scripts": {
-    "clean": "rimraf .firebase .cache build",
+    "clean": "gatsby clean && rimraf .firebase",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}"

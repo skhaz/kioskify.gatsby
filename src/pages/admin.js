@@ -1,31 +1,54 @@
-import React from "react"
-import { ThemeProvider } from "@material-ui/styles"
+import React, { useEffect, useContext, useState } from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
+import { ThemeProvider } from "@material-ui/styles"
 import { createMuiTheme } from "@material-ui/core/styles"
 import { deepPurple, deepOrange } from "@material-ui/core/colors"
 import { makeStyles } from "@material-ui/styles"
 
-import Button from "@material-ui/core/Button"
+import { useCollection } from "react-firebase-hooks/firestore"
+
+import {
+  getFirebase,
+  useFirebase,
+  FirebaseContext,
+} from "../providers/firebase"
 
 const useStyles = makeStyles({
-  root: {
-    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-    border: 0,
-    borderRadius: 3,
-    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-  },
+  button: {},
 })
 
 function App() {
   const classes = useStyles()
 
-  return <Button className={classes.root}>Hook</Button>
+  const firebase = useFirebase()
+
+  const [value, loading, error] = useCollection(
+    firebase.firestore().collection("machines")
+  )
+
+  return (
+    <>
+      {value &&
+        value.docs.map((doc, i) => (
+          <h5 key={`d-${i}`}>{doc.data().manufacture}</h5>
+        ))}
+    </>
+  )
 }
 
 export default () => {
+  const [firebase, setFirebase] = useState()
+
+  useEffect(() => {
+    const lazyApp = import("firebase/app")
+    const lazyFirestore = import("firebase/firestore")
+    const lazyAuth = import("firebase/auth")
+
+    Promise.all([lazyApp, lazyFirestore, lazyAuth]).then(([firebase]) => {
+      setFirebase(getFirebase(firebase))
+    })
+  }, [])
+
   const theme = createMuiTheme({
     palette: {
       primary: deepPurple,
@@ -39,7 +62,39 @@ export default () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <App />
+      {firebase && (
+        <FirebaseContext.Provider value={firebase}>
+          <App />
+        </FirebaseContext.Provider>
+      )}
     </ThemeProvider>
   )
 }
+
+/*
+
+
+const App = withFirebase((f) => <h2>{JSON.stringify(f)}</h2>)
+
+export default () => {
+
+  useEffect(() => {
+    const lazyApp = import("firebase/app")
+    const lazyFirestore = import("firebase/firestore")
+    const lazyAuth = import("firebase/auth")
+
+    Promise.all([lazyApp, lazyFirestore, lazyAuth]).then(([firebase]) => {
+      const firestore = getFirebase(firebase).firestore()
+      console.log(firestore)
+      setFirebase(firestore)
+    })
+  }, [])
+
+  const FirebaseContext = React.createContext(null)
+
+  return (
+      
+    
+  )
+}
+*/
