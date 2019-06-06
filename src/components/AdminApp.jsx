@@ -5,7 +5,6 @@ import Tab from "@material-ui/core/Tab"
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
-import { useCollection } from "react-firebase-hooks/firestore"
 import { useFirebase } from "../providers/firebase"
 
 export default () => {
@@ -23,17 +22,7 @@ export default () => {
 
   const firebase = useFirebase()
 
-  const firestore = firebase.firestore()
-
-  const auth = firebase.auth()
-
-  const query = firestore.collection("machines")
-
-  const [value, loading, error] = useCollection(query)
-
-  const renderUnauthorized = () => (
-    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
-  )
+  const firebaseAuth = firebase.auth()
 
   const uiConfig = {
     signInFlow: "popup",
@@ -44,6 +33,20 @@ export default () => {
       signInSuccessWithAuthResult: () => false,
     },
   }
+
+  useEffect(() => {
+    const unsubscribe = firebaseAuth.onAuthStateChanged(user =>
+      setSignedIn(!!user)
+    )
+
+    return () => {
+      unsubscribe()
+    }
+  }, [])
+
+  const renderUnauthorized = () => (
+    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebaseAuth} />
+  )
 
   const renderEditor = () => <></>
 
