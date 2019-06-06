@@ -18,6 +18,8 @@ export default () => {
     <Tab component="a" onClick={event => event.preventDefault()} {...props} />
   )
 
+  const [index, setIndex] = useState(2)
+
   const [isSignedIn, setSignedIn] = useState(null)
 
   const firebase = useFirebase()
@@ -48,7 +50,32 @@ export default () => {
     <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebaseAuth} />
   )
 
-  const renderEditor = () => <></>
+  const renderEditor = () => (
+    <>
+      <AppBar position="static" color="default">
+        <Tabs
+          variant="fullWidth"
+          indicatorColor="primary"
+          value={index}
+          onChange={(_, newValue) => setIndex(newValue)}
+        >
+          <LinkTab label="analytics" href="#" />
+          <LinkTab label="machines" href="#" />
+          <LinkTab label="playlist" href="#" />
+        </Tabs>
+      </AppBar>
+      {index === 1 && (
+        <TabContainer>
+          <MachineManager />
+        </TabContainer>
+      )}
+      {index === 2 && (
+        <TabContainer>
+          <PlaylistEditor />
+        </TabContainer>
+      )}
+    </>
+  )
 
   return (
     <>
