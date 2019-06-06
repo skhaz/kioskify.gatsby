@@ -62,11 +62,9 @@ export default () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {firebase && (
         <FirebaseContext.Provider value={firebase}>
           <App />
         </FirebaseContext.Provider>
-      )}
     </ThemeProvider>
   )
 }
