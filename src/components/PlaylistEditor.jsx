@@ -4,10 +4,10 @@ import { makeStyles } from "@material-ui/styles"
 import Paper from "@material-ui/core/Paper"
 import AddIcon from "@material-ui/icons/Add"
 import Fab from "@material-ui/core/Fab"
-import { firestore, auth } from "../helpers/firebase"
 import NewVideoDialog from "./NewVideoDialog"
 import SortableContainer from "./SortableContainer"
 import PreviewDialog from "./PreviewDialog"
+import { useFirebase } from "../providers/firebase"
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -29,6 +29,12 @@ export default () => {
   const [preview, setPreview] = useState({ open: false })
 
   const classes = useStyles()
+
+  const firebase = useFirebase()
+
+  const firestore = firebase.firestore()
+
+  const auth = firebase.auth()
 
   const publish = async () => {
     const batch = firestore.batch()

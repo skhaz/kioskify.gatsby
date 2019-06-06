@@ -5,7 +5,7 @@ import ListItem from "@material-ui/core/ListItem"
 import ListItemText from "@material-ui/core/ListItemText"
 import ListItemAvatar from "@material-ui/core/ListItemAvatar"
 import Avatar from "@material-ui/core/Avatar"
-import { firestore } from "../helpers/firebase"
+import { useFirebase } from "../providers/firebase"
 
 const useStyles = makeStyles({
   root: {
@@ -39,6 +39,10 @@ export default sortableElement(props => {
   const [holder, setHolder] = useState()
 
   const classes = useStyles()
+
+  const firebase = useFirebase()
+
+  const firestore = firebase.firestore()
 
   const stringify = (error, ready, durationInSec) => {
     if (error) {
