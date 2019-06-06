@@ -4,7 +4,7 @@ import { ThemeProvider } from "@material-ui/styles"
 import { createMuiTheme } from "@material-ui/core/styles"
 import { deepPurple, deepOrange } from "@material-ui/core/colors"
 import { getFirebase, FirebaseContext } from "../providers/firebase"
-import { App, Header } from "../components"
+import AdminApp from "../components/AdminApp"
 
 export default () => {
   const [firebase, setFirebase] = useState()
@@ -14,9 +14,9 @@ export default () => {
     const lazyFirestore = import("firebase/firestore")
     const lazyAuth = import("firebase/auth")
 
-    Promise.all([lazyApp, lazyFirestore, lazyAuth]).then(([firebase]) => {
+    Promise.all([lazyApp, lazyFirestore, lazyAuth]).then(([firebase]) =>
       setFirebase(getFirebase(firebase))
-    })
+    )
   }, [])
 
   const theme = createMuiTheme({
@@ -32,10 +32,9 @@ export default () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header />
       {firebase && (
         <FirebaseContext.Provider value={firebase}>
-          <App />
+          <AdminApp />
         </FirebaseContext.Provider>
       )}
     </ThemeProvider>

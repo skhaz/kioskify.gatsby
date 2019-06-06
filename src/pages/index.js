@@ -1,6 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
+import App from "../components/App"
 
-export default () => {
-  return <Link to="/admin">admin</Link>
-}
+export default () => <App />
