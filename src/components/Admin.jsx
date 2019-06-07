@@ -5,7 +5,7 @@ import Tab from "@material-ui/core/Tab"
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
-import { useFirebase } from "../providers/firebase"
+import { useFirebase } from "~/providers/firebase"
 import PlaylistEditor from "./PlaylistEditor"
 import MachineManager from "./MachineManager"
 

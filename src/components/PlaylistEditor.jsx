@@ -7,7 +7,7 @@ import Fab from "@material-ui/core/Fab"
 import NewVideoDialog from "./NewVideoDialog"
 import SortableContainer from "./SortableContainer"
 import PreviewDialog from "./PreviewDialog"
-import { useFirebase } from "../providers/firebase"
+import { useFirebase } from "~/providers/firebase"
 
 const useStyles = makeStyles(theme => ({
   paper: {

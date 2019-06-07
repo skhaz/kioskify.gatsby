@@ -3,8 +3,8 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import { ThemeProvider } from "@material-ui/styles"
 import { createMuiTheme } from "@material-ui/core/styles"
 import { deepPurple, deepOrange } from "@material-ui/core/colors"
-import { getFirebase, FirebaseContext } from "../providers/firebase"
-import Admin from "../components/Admin"
+import { getFirebase, FirebaseContext } from "~/providers/firebase"
+import Admin from "~/components/Admin"
 
 export default () => {
   const [firebase, setFirebase] = useState()

@@ -6,8 +6,8 @@ import ListItem from "@material-ui/core/ListItem"
 import ListItemText from "@material-ui/core/ListItemText"
 import AddIcon from "@material-ui/icons/Add"
 import Fab from "@material-ui/core/Fab"
-import { useFirebase } from "../providers/firebase"
-import PairMachineDialog from "./PairMachineDialog"
+import { useFirebase } from "~/providers/firebase"
+import PairMachineDialog from "~/components/PairMachineDialog"
 
 const useStyles = makeStyles(theme => ({
   paper: {
