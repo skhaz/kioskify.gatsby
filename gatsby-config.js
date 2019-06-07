@@ -38,5 +38,12 @@ module.exports = {
         color: "tomato",
       },
     },
+    {
+      resolve: `gatsby-plugin-root-import`,
+      options: {
+        ['~']: `${__dirname}/src`,
+        pages: `${__dirname}/src/pages`,
+      },
+    },
   ],
 }

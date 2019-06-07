@@ -59,9 +59,9 @@ export default () => {
   }
 
   useEffect(() => {
+    /*
     const { uid } = auth.currentUser
 
-    /*
     const userRef = firestore.doc(`users/${uid}`);
     const groupQuery = await firestore
       .collection('groups')
