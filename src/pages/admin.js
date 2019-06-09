@@ -3,7 +3,7 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import { ThemeProvider } from "@material-ui/styles"
 import { createMuiTheme } from "@material-ui/core/styles"
 import { deepPurple, deepOrange } from "@material-ui/core/colors"
-import { getFirebase, FirebaseContext } from "~/providers/firebase"
+import { initFirebase, FirebaseContext } from "~/providers/firebase"
 import Admin from "~/components/Admin"
 
 export default () => {
@@ -15,7 +15,7 @@ export default () => {
     const lazyAuth = import("firebase/auth")
 
     Promise.all([lazyApp, lazyFirestore, lazyAuth]).then(([firebase]) =>
-      setFirebase(getFirebase(firebase))
+      setFirebase(initFirebase(firebase))
     )
   }, [])
 
