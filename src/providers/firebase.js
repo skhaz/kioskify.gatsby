@@ -12,7 +12,7 @@ const firebaseSettings = {
 
 let firebaseInstance
 
-const getFirebase = firebase => {
+const initFirebase = firebase => {
   if (firebaseInstance) {
     return firebaseInstance
   }
@@ -28,4 +28,4 @@ const useFirebase = () => {
   return useContext(FirebaseContext)
 }
 
-export { FirebaseContext, getFirebase, useFirebase }
+export { FirebaseContext, initFirebase, useFirebase }
