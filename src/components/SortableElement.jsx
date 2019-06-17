@@ -74,9 +74,9 @@ export default sortableElement(props => {
       return
     }
 
-    const { error, ready, durationInSec, yid } = document
+    const { error, ready, meta, yid } = document
 
-    const status = stringify(error, ready, durationInSec)
+    const status = stringify(error, ready, meta.durationInSec)
 
     const thumbnail = `https://i.ytimg.com/vi/${yid}/mqdefault.jpg`
 
