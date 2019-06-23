@@ -1,4 +1,7 @@
 module.exports = {
+  siteMetadata: {
+    title: "Kioskify"
+  },
   plugins: [
     {
       resolve: `gatsby-plugin-web-font-loader`,
