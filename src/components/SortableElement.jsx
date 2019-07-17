@@ -4,7 +4,9 @@ import { sortableElement } from "react-sortable-hoc"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemText from "@material-ui/core/ListItemText"
 import ListItemAvatar from "@material-ui/core/ListItemAvatar"
+import Typography from "@material-ui/core/Typography"
 import Avatar from "@material-ui/core/Avatar"
+import Icon from "@material-ui/core/Icon"
 import { useFirebase } from "~/providers/firebase"
 
 const useStyles = makeStyles({
@@ -39,6 +41,8 @@ export default sortableElement(props => {
 
   const [holder, setHolder] = useState()
 
+  const [views, setViews] = useState(0)
+
   const classes = useStyles()
 
   const firebase = useFirebase()
@@ -63,7 +67,7 @@ export default sortableElement(props => {
     return "..."
   }
 
-  const handleSnapshot = snapshot => {
+  const handleVideo = snapshot => {
     if (!snapshot.exists) {
       return
     }
@@ -85,17 +89,32 @@ export default sortableElement(props => {
     setHolder({ status, ready, title, thumbnail })
   }
 
+  const handleShards = snapshot => {
+    let views = 0
+
+    snapshot.forEach(doc => {
+      views += doc.data().count
+    })
+
+    setViews(views)
+  }
+
   useEffect(() => {
     const { vid: id } = value
 
-    const unsubscribe = firestore
-      .collection("videos")
-      .doc(id)
-      .onSnapshot(handleSnapshot)
+    const subscribers = [
+      firestore
+        .collection("videos")
+        .doc(id)
+        .onSnapshot(handleVideo),
+      firestore
+        .collection("videos")
+        .doc(id)
+        .collection("shards")
+        .onSnapshot(handleShards),
+    ]
 
-    return () => {
-      unsubscribe()
-    }
+    return () => subscribers.forEach(fn => fn())
   }, [])
 
   return (
@@ -112,6 +131,13 @@ export default sortableElement(props => {
             <Avatar className={classes.thumbnail} src={holder.thumbnail} />
           </ListItemAvatar>
           <ListItemText primary={holder.title} secondary={holder.status} />
+          <ListItemText
+            primary={
+              <Typography variant="body2" align="right">
+                {views}
+              </Typography>
+            }
+          />
         </>
       )}
     </ListItem>
