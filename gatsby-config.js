@@ -14,18 +14,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-material-ui`,
-    `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: "Kioskify",
-        short_name: "Kioskify",
-        start_url: "/",
-        background_color: "#51317c",
-        theme_color: "#51317c",
-        display: "standalone",
-      },
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
