@@ -97,15 +97,19 @@ export default () => {
       : groupQuery.docs[0].ref
 
     const batch = firestore.batch()
+
     batch.update(machineRef, {
       pinCode: firebase.firestore.FieldValue.delete(),
     })
+
     batch.update(machineRef, {
       user: userRef,
       group: groupRef,
       added: new Date(),
     })
+
     batch.set(groupRef, { user: userRef, default: true }, { merge: true })
+
     return batch.commit()
   }
 

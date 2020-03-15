@@ -20,7 +20,7 @@ export default () => {
     <Tab component="a" onClick={event => event.preventDefault()} {...props} />
   )
 
-  const [index, setIndex] = useState(2)
+  const [index, setIndex] = useState(1)
 
   const [isSignedIn, setSignedIn] = useState(null)
 

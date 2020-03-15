@@ -28,6 +28,8 @@ export default () => {
 
   const [preview, setPreview] = useState({ open: false })
 
+  const [group, setGroup] = useState({})
+
   const classes = useStyles()
 
   const firebase = useFirebase()
@@ -59,29 +61,32 @@ export default () => {
   }
 
   useEffect(() => {
-    /*
     const { uid } = auth.currentUser
 
-    const userRef = firestore.doc(`users/${uid}`);
-    const groupQuery = await firestore
-      .collection('groups')
-      .where('user', '==', userRef)
-      .where('default', '==', true)
-      .limit(1)
-      .get();
-    const groupRef = groupQuery.docs[0].ref;
-    */
+    const userRef = firestore.doc(`users/${uid}`)
 
+    firestore
+      .collection("groups")
+      .where("user", "==", userRef)
+      .where("default", "==", true)
+      .limit(1)
+      .get()
+      .then(snapshot => {
+        setGroup(snapshot.docs[0].ref)
+      })
+  }, [])
+
+  useEffect(() => {
     const unsubscribe = firestore
       .collection("v1")
-      // .where('group', '==', groupRef)
+      .where("group", "==", group)
       .orderBy("#")
       .onSnapshot(onCompletion)
 
     return () => {
       unsubscribe()
     }
-  }, [])
+  }, [group])
 
   useEffect(() => {
     publish()

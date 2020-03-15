@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react"
 import { makeStyles } from "@material-ui/styles"
 import { sortableElement } from "react-sortable-hoc"
 import ListItem from "@material-ui/core/ListItem"
-import ListItemText from "@material-ui/core/ListItemText"
-import ListItemAvatar from "@material-ui/core/ListItemAvatar"
 import Typography from "@material-ui/core/Typography"
 import Avatar from "@material-ui/core/Avatar"
-import Icon from "@material-ui/core/Icon"
+import ListItemText from "@material-ui/core/ListItemText"
+import ListItemAvatar from "@material-ui/core/ListItemAvatar"
 import { useFirebase } from "~/providers/firebase"
 
 const useStyles = makeStyles({
